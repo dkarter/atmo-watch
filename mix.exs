@@ -1,7 +1,7 @@
-defmodule WaterMe.MixProject do
+defmodule AtmoWatch.MixProject do
   use Mix.Project
 
-  @app :water_me
+  @app :atmo_watch
   @version "0.1.0"
   @all_targets [:rpi, :rpi0, :rpi2, :rpi3, :rpi3a, :rpi4, :bbb, :osd32mp1, :x86_64, :grisp2]
 
@@ -21,8 +21,8 @@ defmodule WaterMe.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      mod: {WaterMe.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      mod: {AtmoWatch.Application, []},
+      extra_applications: [:logger, :runtime_tools, :inets]
     ]
   end
 
@@ -34,6 +34,13 @@ defmodule WaterMe.MixProject do
       {:shoehorn, "~> 0.9.1"},
       {:ring_logger, "~> 0.8.5"},
       {:toolshed, "~> 0.2.26"},
+      {:circuits_gpio, "~> 1.0"},
+      {:circuits_spi, "~> 1.3"},
+      {:req, "~> 0.3"},
+      # {:vintage_net_wizard, "~> 0.4"},
+      {:plug, "~> 1.14"},
+      {:plug_cowboy, "~> 2.6"},
+      {:dht, "~> 0.1"},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.13.0", targets: @all_targets},

@@ -1,4 +1,4 @@
-# WaterMe
+# AtmoWatch
 
 **TODO: Add description**
 

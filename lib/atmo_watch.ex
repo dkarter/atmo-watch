@@ -1,6 +1,6 @@
-defmodule WaterMe do
+defmodule AtmoWatch do
   @moduledoc """
-  Documentation for WaterMe.
+  Documentation for AtmoWatch.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule WaterMe do
 
   ## Examples
 
-      iex> WaterMe.hello
+      iex> AtmoWatch.hello
       :world
 
   """

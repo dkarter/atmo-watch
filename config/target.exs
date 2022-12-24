@@ -18,7 +18,7 @@ config :shoehorn, init: [:nerves_runtime, :nerves_pack]
 
 config :nerves,
   erlinit: [
-    hostname_pattern: "nerves-%s"
+    hostname_pattern: "atmo-watch-%s"
   ]
 
 # Configure the device for SSH IEx prompt access and firmware updates
@@ -56,7 +56,20 @@ config :vintage_net,
        type: VintageNetEthernet,
        ipv4: %{method: :dhcp}
      }},
-    {"wlan0", %{type: VintageNetWiFi}}
+    {"wlan0",
+     %{
+       type: VintageNetWiFi,
+       vintage_net_wifi: %{
+         networks: [
+           %{
+             key_mgmt: :wpa_psk,
+             ssid: System.fetch_env!("SSID"),
+             psk: System.fetch_env!("PSK")
+           }
+         ]
+       },
+       ipv4: %{method: :dhcp}
+     }}
   ]
 
 config :mdns_lite,
@@ -68,7 +81,7 @@ config :mdns_lite,
   # because otherwise any of the devices may respond to nerves.local leading to
   # unpredictable behavior.
 
-  hosts: [:hostname, "nerves"],
+  hosts: [:hostname, "atmo-watch"],
   ttl: 120,
 
   # Advertise the following services over mDNS.

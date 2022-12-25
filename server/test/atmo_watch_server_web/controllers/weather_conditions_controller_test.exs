@@ -3,14 +3,15 @@ defmodule AtmoWatchServerWeb.Controllers.WeatherConditionsControllerTest do
 
   import ExUnit.CaptureLog, only: [with_log: 1]
 
-  # TODO: use verified routes
   describe "POST /api/weather-conditions" do
-    @route "/api/weather-conditions"
+    setup do
+      {:ok, %{route: ~p"/api/weather-conditions"}}
+    end
 
     test "creates a record when valid payload is supplied", ctx do
       conn =
         ctx.conn
-        |> post(@route, %{temperature_c: "12.3", humidity_percent: "5"})
+        |> post(ctx.route, %{temperature_c: "12.3", humidity_percent: "5"})
 
       assert %{
                "humidity_percent" => "5",
@@ -22,7 +23,7 @@ defmodule AtmoWatchServerWeb.Controllers.WeatherConditionsControllerTest do
       {conn, log} =
         with_log(fn ->
           ctx.conn
-          |> post(@route, %{})
+          |> post(ctx.route, %{})
         end)
 
       assert %{"message" => "Poorly formatted payload"} =

@@ -20,6 +20,12 @@ defmodule AtmoWatchServerWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/api", AtmoWatchServerWeb do
+    pipe_through :api
+
+    post "/weather-conditions", WeatherConditionsController, :create
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", AtmoWatchServerWeb do
   #   pipe_through :api

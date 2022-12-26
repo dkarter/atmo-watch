@@ -18,7 +18,6 @@ defmodule AtmoWatch.Application do
       [
         # Children for all targets
         # Starts a worker by calling: AtmoWatch.Worker.start_link(arg)
-        {AtmoWatch.CommWorker, []},
         {Plug.Cowboy,
          [
            scheme: :http,
@@ -42,7 +41,8 @@ defmodule AtmoWatch.Application do
   def children(_target) do
     [
       # Children for all targets except host
-      {AtmoWatch.HumidityTemperatureWorker, []}
+      {AtmoWatch.HumidityTemperatureWorker, []},
+      {AtmoWatch.Publisher, []}
     ]
   end
 

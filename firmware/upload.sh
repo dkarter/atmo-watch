@@ -46,7 +46,7 @@ help() {
 	exit 1
 }
 
-[ -n "$DESTINATION" ] || DESTINATION=atmo-watch-5082.local
+[ -n "$DESTINATION" ] || DESTINATION=atmo-watch.local
 if [ -z "$FILENAME" ]; then
 	[ -n "$MIX_TARGET" ] || MIX_TARGET=rpi0
 	[ -n "$MIX_ENV" ] || MIX_ENV=dev

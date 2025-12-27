@@ -32,28 +32,19 @@ defmodule AtmoWatch.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # Core Nerves Framework - Updated to latest
-      {:nerves, "~> 1.12.0", runtime: false},
-      {:shoehorn, "~> 0.9.1"},
-      {:ring_logger, "~> 0.11"},
-      {:toolshed, "~> 0.4"},
-
-      # Hardware Libraries - Updated to v2.x
       {:circuits_gpio, "~> 2.1"},
       {:circuits_spi, "~> 2.0"},
       {:dht, "~> 0.1"},
-
-      # HTTP/Networking - Updated to latest
-      {:req, "~> 0.5"},
+      {:nerves, "~> 1.12.0", runtime: false},
+      {:nerves_pack, "~> 0.7.1", targets: @all_targets},
+      {:nerves_runtime, "~> 0.13.8", targets: @all_targets},
+      {:nerves_system_rpi0, "~> 1.29", runtime: false, targets: :rpi0},
       {:plug, "~> 1.16"},
       {:plug_cowboy, "~> 2.7"},
-
-      # Runtime dependencies - Updated
-      {:nerves_runtime, "~> 0.13.8", targets: @all_targets},
-      {:nerves_pack, "~> 0.7.1", targets: @all_targets},
-
-      # System package for Raspberry Pi Zero
-      {:nerves_system_rpi0, "~> 1.29", runtime: false, targets: :rpi0}
+      {:req, "~> 0.5"},
+      {:ring_logger, "~> 0.11"},
+      {:shoehorn, "~> 0.9.1"},
+      {:toolshed, "~> 0.4"}
     ]
   end
 

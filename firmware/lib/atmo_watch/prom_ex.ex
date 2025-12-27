@@ -8,10 +8,10 @@ defmodule AtmoWatch.PromEx do
     [
       # PromEx built in plugins
       Plugins.Application,
-      Plugins.Beam
+      Plugins.Beam,
 
       # Add your own PromEx metrics plugins
-      # AtmoWatch.Users.PromExPlugin
+      AtmoWatch.SensorPromExPlugin
     ]
   end
 

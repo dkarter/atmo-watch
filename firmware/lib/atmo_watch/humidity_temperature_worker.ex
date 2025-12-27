@@ -30,6 +30,15 @@ defmodule AtmoWatch.HumidityTemperatureWorker do
     DHT.read(@pin, :dht11)
     |> case do
       {:ok, reading} ->
+        :telemetry.execute(
+          [:atmo_watch, :sensor, :reading],
+          %{
+            temperature: reading.temperature,
+            humidity: reading.humidity
+          },
+          %{sensor_type: :dht11}
+        )
+
         {:noreply, Map.put(state, :readings, reading)}
 
       {:error, reason} ->

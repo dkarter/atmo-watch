@@ -20,9 +20,15 @@ config :nerves, :firmware, rootfs_overlay: "rootfs_overlay"
 
 config :nerves, source_date_epoch: "1669950671"
 
-
 if Mix.target() == :host do
   import_config "host.exs"
 else
   import_config "target.exs"
 end
+
+config :atmo_watch, AtmoWatch.PromEx,
+  disabled: false,
+  manual_metrics_start_delay: :no_delay,
+  drop_metrics_groups: [],
+  grafana: :disabled,
+  metrics_server: :disabled

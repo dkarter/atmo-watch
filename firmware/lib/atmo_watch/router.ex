@@ -11,6 +11,8 @@ defmodule AtmoWatch.Router do
 
   plug :dispatch
 
+  plug PromEx.Plug, prom_ex_module: AtmoWatch.PromEx
+
   get "/ping" do
     conn
     |> text("pong")

@@ -41,6 +41,7 @@ defmodule AtmoWatch.MixProject do
       {:nerves_system_rpi0, "~> 1.29", runtime: false, targets: :rpi0},
       {:plug, "~> 1.16"},
       {:plug_cowboy, "~> 2.7"},
+      {:prom_ex, "~> 1.11"},
       {:req, "~> 0.5"},
       {:ring_logger, "~> 0.11"},
       {:shoehorn, "~> 0.9.1"},

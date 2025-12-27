@@ -17,7 +17,7 @@ defmodule AtmoWatch.Application do
     children =
       [
         # Children for all targets
-        # Starts a worker by calling: AtmoWatch.Worker.start_link(arg)
+        AtmoWatch.PromEx,
         {Plug.Cowboy,
          [
            scheme: :http,
